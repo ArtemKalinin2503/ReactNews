@@ -1,0 +1,11 @@
+.edit-active {
+	display: none;
+}
+
+.no-active-edit-news {
+	display: none;
+} 
+
+.active-edit-news {
+	display: block;
+}
