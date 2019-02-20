@@ -5,18 +5,7 @@ class News extends Component {
     constructor(props) {
         super(props)
         this.state={
-            news: [
-                {
-                    id: 1,
-                    description: 'новость 1',
-                    edit: false //Данное состояние нужно чтобы отслеживать редактируем ли новость
-                },
-                {
-                    id: 2,
-                    description: 'новость 2',
-                    edit: false
-                }
-            ]
+            edit: false //Состояние для отслеживания (редактируем ли мы запись или нет)
         }
     };
 
@@ -30,26 +19,18 @@ class News extends Component {
     //Кнопка Сохранить
     handleSaveNews = () => {
         this.setState({
-            edit: !this.state.edit
+            edit: !this.state.edit //Вернем противоположное значение состояния edit (если true тогда изменим классы для элементов в новости)
         });
     };
 
     render() {
-
-        //С помощью метода map берем массив объектов news
-        const listNews = this.state.news.map((item, index) => {
-            return <div key={index} className="news">
-                        <p>{item.description}</p>
-                        <button onClick={this.handleEditNews} className={this.state.edit ? 'edit-active': ''}>Редактировать</button>
-                        <button onClick={this.handleDeleteNews}  className={this.state.edit ? 'edit-active': ''}>Удалить</button>
-                        <textarea className={this.state.edit ? 'active-edit-news': 'no-active-edit-news'} placeholder="Изменить новость"></textarea>
-                        <button onClick={this.handleSaveNews} className={this.state.edit ? 'active-edit-news': 'no-active-edit-news'}>Сохранить</button>
-                    </div>
-        });
-
         return (
             <div className="wrapper-news">
-                {listNews}
+                <p>{this.props.description}</p> {/*Данные доступны благодаря переданнуму state из компонента App в атрибутах*/}
+                <button onClick={this.handleEditNews} className={this.state.edit ? 'edit-active': ''}>Редактировать</button>
+                <button onClick={this.handleDeleteNews}  className={this.state.edit ? 'edit-active': ''}>Удалить</button>
+                <textarea className={this.state.edit ? 'active-edit-news': 'no-active-edit-news'} placeholder="Изменить новость"></textarea>
+                <button onClick={this.handleSaveNews} className={this.state.edit ? 'active-edit-news': 'no-active-edit-news'}>Сохранить</button>
             </div>
         )
     }
