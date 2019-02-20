@@ -18,8 +18,8 @@ class News extends Component {
 
     //Кнопка Сохранить
     handleSaveNews = () => {
-        let inputEditNews = this.refs.newEditNews.value; //С помощью ref (ссылка) получим значение (value) teatarea
-        this.props.updateNews(inputEditNews, this.props.index)
+        let inputEditNews = this.refs.newEditNews.value; //С помощью ref (ссылка) получим значение (value) teaxtarea
+        this.props.updateNews(inputEditNews, this.props.index) //Вызовим функцию updateBlock которую мы передали в атрибут updateNews (в качестве параметров передаем value textarea и index элемента (чтобы изменялось значение только конкретного блока с новостями))
         this.setState({
             edit: !this.state.edit //Вернем противоположное значение состояния edit (если true тогда изменим классы для элементов в новости)
         });
@@ -29,7 +29,7 @@ class News extends Component {
     //Кнопка Удалить
     handleDeleteNews= () => {
         this.props.deleteNews(this.props.index); //Вызывыем функцию deleteBlock (которую мы передали в атрибут deleteNews)
-    }
+    };
 
     render() {
         return (

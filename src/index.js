@@ -15,6 +15,7 @@ class App extends Component {
             {
               id: 1,
               description: 'новость 1',
+              test: 'test'
             },
             {
               id: 2,
@@ -35,14 +36,13 @@ class App extends Component {
 
   //Функция которая будет изменять Новость
   updateBlock = (text, index) => {
-    let arrNews = this.state.news;
-    arrNews[index] = text;
-    console.log(arrNews)
+    let arrNews = this.state.news; //Запишем в переменную arrNews наш state news
+    arrNews[index].description = text; //В  index попадем имеенно тот  description  который нам нужен (text - это аргумент в который передаем inputEditNews) 
     this.setState({
       news: arrNews
     });
   };
-  
+
   render() {
   	const listNews = this.state.news.map((item, index) => { //С помощью метода map будем выводить компонент News (столько раз сколько записей в самом массиве объектов News)
 			return <News
@@ -52,7 +52,7 @@ class App extends Component {
 				        id={item.id} 
 				        description={item.description}
                 updateNews={this.updateBlock}
-                deleteNews={this.deleteBlock} //В качестве атрибута пердадим функция deleteBlock (чтобы она была доступна компоненту News через props)
+                deleteNews={this.deleteBlock} //В качестве атрибута передадим функцию deleteBlock (чтобы она была доступна компоненту News через props)
 			       />;
 		});
 
