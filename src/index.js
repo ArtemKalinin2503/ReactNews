@@ -14,12 +14,7 @@ class App extends Component {
         news: [
             {
               id: 1,
-              description: 'новость 1',
-              test: 'test'
-            },
-            {
-              id: 2,
-              description: 'новость 2',
+              description: 'новость 1'
             }
         ]
     }
@@ -43,6 +38,16 @@ class App extends Component {
     });
   };
 
+  //Функция которая будет добавлять Новость
+  addNews = (text) => {
+    let arrNews = this.state.news;
+    arrNews.push({description: text}); 
+    console.log(this.addNews)
+    this.setState({
+      news: arrNews
+    });
+  };
+
   render() {
   	const listNews = this.state.news.map((item, index) => { //С помощью метода map будем выводить компонент News (столько раз сколько записей в самом массиве объектов News)
 			return <News
@@ -51,13 +56,14 @@ class App extends Component {
                 index={index} //Данный атрибут нужен чтобы мы могли брать конкретный блок (экземпляр нашего компонента)
 				        id={item.id} 
 				        description={item.description}
-                updateNews={this.updateBlock}
+                updateNews={this.updateBlock} //В качестве атрибута передадим функцию updateBlock (чтобы она была доступна компоненту News через props)
                 deleteNews={this.deleteBlock} //В качестве атрибута передадим функцию deleteBlock (чтобы она была доступна компоненту News через props)
-			       />;
+             />;
 		});
 
 		return <div className="wrapper-component-app">
-              <div className="wrapper-component-user">
+              <div className="wrapper-component-news">
+                  <button onClick={this.addNews.bind(null, 'Новая новость')}>Добавить новость</button>
                   {listNews} {/*вывод данных*/}
               </div>
            </div>       
