@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
 class News extends Component {
 
     constructor(props) {
@@ -34,11 +33,11 @@ class News extends Component {
     render() {
         return (
             <div className="wrapper-news">
-                <p>{this.props.description}</p> {/*Данные доступны благодаря переданнуму state из компонента App в атрибутах*/}
-                <button onClick={this.handleEditNews} className={this.state.edit ? 'edit-active': ''}>Редактировать</button>
-                <button onClick={this.handleDeleteNews}  className={this.state.edit ? 'edit-active': ''}>Удалить</button>
-                <textarea ref="newEditNews" className={this.state.edit ? 'active-edit-news': 'no-active-edit-news'} placeholder="Изменить новость"></textarea>
-                <button onClick={this.handleSaveNews} className={this.state.edit ? 'active-edit-news': 'no-active-edit-news'}>Сохранить</button>
+                <p className="news-text">{this.props.description}</p> {/*Данные доступны благодаря переданнуму state из компонента App в атрибутах*/}
+                <button onClick={this.handleEditNews} className={this.state.edit ? 'btn-news-edit edit-active': 'btn-edit btn-news-edit'}>Редактировать</button>
+                <button onClick={this.handleDeleteNews}  className={this.state.edit ? 'btn-news-delete edit-active': 'btn-news btn-news-delete'}>Удалить</button>
+                <textarea ref="newEditNews" className={this.state.edit ? 'active-edit-news input-edit-news': 'no-active-edit-news input-edit-news'} placeholder="Изменить новость"></textarea>
+                <button onClick={this.handleSaveNews} className={this.state.edit ? 'active-edit-news btn-save': 'no-active-edit-news btn-save'}>Сохранить</button>
             </div>
         )
     }

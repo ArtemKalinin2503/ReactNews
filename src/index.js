@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
-import _ from 'lodash';
 import News from './components/News';
 
 //Основной компонент 
@@ -42,7 +41,6 @@ class App extends Component {
   addNews = (text) => {
     let arrNews = this.state.news;
     arrNews.push({description: text}); 
-    console.log(this.addNews)
     this.setState({
       news: arrNews
     });
@@ -63,7 +61,7 @@ class App extends Component {
 
 		return <div className="wrapper-component-app">
               <div className="wrapper-component-news">
-                  <button onClick={this.addNews.bind(null, 'Новая новость')}>Добавить новость</button>
+                  <button className="btn-add-news" onClick={this.addNews.bind(null, 'Новая новость')}>Добавить новость</button>
                   {listNews} {/*вывод данных*/}
               </div>
            </div>       
